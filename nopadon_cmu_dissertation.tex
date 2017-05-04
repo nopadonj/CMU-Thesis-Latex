@@ -1,0 +1,278 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% File: nopadon_cmu_dissertation.tex
+%% Author: Nopadon Juneam
+%% Date:  May 4, 2017
+%% Email: juneam.n@gmail.com, nopadon_j@cmu.ac.th
+%% Department of Computer Science, Chiang Mai University
+%%
+%% This is the main tex file of the latex template for Thesis and Dissertation for Chiang Mai University.
+%% The propose of the tex file is to demonstrate the use of CMU Thesis & Dissertation Package for writing a %% thesis/dissertation according to the format of the graduate school of Chiang Mai University.
+%%
+%% Caution: Please keep in mind that the file is not the official template from the graduate school of 
+%% Chiang Mai University. However, the author's dissertation using this tex file have passed the school's 
+%% inspection (in April 2017).
+%%
+%% Credit: This main tex file is modified from the original latex template for Theses and Dissertation of 
+%% Chulalongkorn University by Dr. Nattee Niparnan.
+%%
+%% The file is compatible with XeLaTex and tested with TeX Live 2016 Version 3.14159265.
+%% 
+%% You can freely modify the file.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%-------------------------------------------------------------------------------
+%%-                               PREAMBLE                                          - 
+%%-------------------------------------------------------------------------------
+\documentclass[a4paper,12pt,engthesis,doctor]{chiangmai}
+%% These are some useful LaTeX package
+%% the list is taken from the bare_jnrl.tex of IEEEtran, by Michael Shell
+%\usepackage[pdftex]{graphicx}           % for including graphics (eps and pdf)
+%% NOTE: for dual use with latex and pdflatex, instead load graphicx like:
+% \ifx\pdfoutput\undefined
+%  \usepackage[dvips]{graphicx}
+%  \graphicspath{{./figure/}}
+% \else
+%  \usepackage[pdftex]{graphicx}
+%  \graphicspath{{./figure/}}
+% \fi
+\graphicspath{{./figure/}}
+
+
+\usepackage{amssymb}
+\usepackage[normalem]{ulem}
+\usepackage[cmex10]{amsmath}	% math package provides several command and symbols
+                                				% cmex10 option force only type 1 font to be used
+\interdisplaylinepenalty=2500   		% amsmath set this value to 10000, if you want to adjust
+                                				% this, do so after use the package
+                                
+\usepackage{newalg}			% package for writing a pseudo code
+\usepackage{array}				% improvement to the tabular and array
+%\usepackage{mdwmath}			% other useful math package for formating equations
+%\usepackage{mdwtab}
+\usepackage{subfig}				% for placing subfigures in one figures environment
+                                				% (for example, Fig 1a and 1b)
+\usepackage{url}				% for breaking urls (use \url{http://www.example.com}
+
+%\usepackage{times}             		% for times roman font
+%\usepackage{lscape}			% for landscape page
+\usepackage{lipsum}  			% for generating dummy texts
+
+\usepackage{background}			% for CMU watermark background
+\backgroundsetup{				% Comment to disable watermark
+scale=1.1,
+angle=0,
+opacity=0.5,
+hshift=25pt,
+contents={\includegraphics[width=\paperwidth,height=\paperheight]{figures/copyrights.jpg}}
+}
+
+\usepackage{multirow}
+\usepackage{enumitem}
+\usepackage{bibentry}
+\usepackage{etoolbox}
+
+\AtBeginEnvironment{definition}{\renewcommand\eminnershape{\normalfont \bfseries}}
+\AtBeginEnvironment{theorem}{\renewcommand\eminnershape{\normalfont \itshape}}
+\AtBeginEnvironment{lemma}{\renewcommand\eminnershape{\normalfont \itshape}}
+\AtBeginEnvironment{corollary}{\renewcommand\eminnershape{\normalfont \itshape}}
+\AtBeginEnvironment{proposition}{\renewcommand\eminnershape{\normalfont \itshape}}
+
+%% Environment, theorem, etc.
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+
+\usepackage{graphicx}
+\usepackage{color}
+\definecolor{light-gray}{gray}{0.5}
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\usepackage{multirow}
+
+% we use \mathbb{R} instead of \Re
+\renewcommand{\Re}{\mathbb{R}}
+
+\newcommand{\pspan}{\mbox{\sc span}^+}
+\newcommand{\nspan}{\mbox{\sc span}^-}
+\newcommand{\itr}{\mbox{\sc int}}
+\newcommand{\co}{\mbox{\sc co}}
+\newcommand{\ri}{\mbox{\sc ri}}
+\newcommand{\ints}{\Omega}
+\newcommand{\rspace}{\Re^3}
+\newcommand{\ha}{\mathcal{H}}
+\newcommand{\FindInts}{\mbox{\sc FindInts}}
+\newcommand{\FindFG}{\mbox{\sc FindFG}}
+\newcommand{\La}{\mathcal{U}}
+\newcommand{\Lb}{{}^S\mathcal{U}}
+\newcommand{\Lc}{{}^\mathfrak{F}\mathcal{U}}
+\newcommand{\Ta}{\mathcal{P}}
+
+%% For proof
+\def\QED{\mbox{\rule[0pt]{1.3ex}{1.3ex}}}	% for a filled box
+\def\proof{\vspace*{-5mm}\noindent{\itshape Proof: }}
+\def\endproof{\hspace*{\fill}~\QED\par\endtrivlist\unskip\par}
+
+%% Correct bad hyphenation here
+\hyphenation{net-works physico-mi-metics kij-sirikul cha-lerm-ek inta-nagon-wiwat tiny-os reducibiliti-es sequen-tial polylog-arithmic}
+
+%%------------------------------------------------------------
+%%-         SETTING THESIS PARAMETERS     -
+%%------------------------------------------------------------
+
+\thesistitle					% set the thesis tile (use {\wbr} for word break)
+{หัวข้อดุษฎีนิพนธ์} %Thai Title
+{Dissertation Title} %English title (auto upper case)
+
+\authortitle					% set the title of the author, e.g., Mr., Miss, Dr. etc.
+{นาย} % Thai Title of the author
+{Mr.} % English Title of the author
+\thesisauthor				% set the author name (must not include title (Mr., Miss, Dr., etc.)
+{ชื่อ นามสกุล} % Author name in Thai
+{Name Surname} % Author name in English
+
+\advisor					% set the advisor
+{รองศาสตราจารย์ ดร. ชื่อ นามสกุล} % Advisor name in Thai
+{รศ. ดร. ชื่อ นามสกุล} % Advisor name in Thai with abbrev. title
+{Assoc. Prof. Dr. Name Surname} % Advisor name in English
+{ASST. PROF. NAME  URNAME, Ph.D.} % Advisor name in English with abbrev. title 	
+									      % (Capital letters except Ph.D.))
+
+%% If the thesis has co-advisor, use this optional command
+\firstcoadvisor
+{ศาสตราจารย์ ดร. ชื่อ นามสกุล}  % Co-Advisor name in Thai
+{ศ. ดร. ชื่อ นามสกุล}  % Co-Advisor name in Thai with abbrev. title
+{Prof. Dr. Name Surname} % Co-Advisor name in English
+{PROF. DR. NAME SURNAME, Ph.D.} % Co-Advisor name in English with abbrev. title 
+							             % (Capital letters except Ph.D.))
+\secondcoadvisor
+{รองศาสตราจารย์ ดร. ชื่อ นามสกุล}  % Co-Advisor name in Thai
+{รศ. ดร. ชื่อ นามสกุล}  % Co-Advisor name in Thai with abbrev. title
+{Assoc. Prof. Dr. Name Surname} % Co-Advisor name in English 
+{ASSOC. PROF. DR. NAME SURNAME, Ph.D.} % Co-Advisor name in English with abbrev. title 
+							                    % (Capital letters except Ph.D.))
+
+\faculty					% set the faculty
+{วิทยาศาสตร์} % Name of the faculty in Thai
+{Science} % Name of the faculty in English
+\department				% set the department
+{วิทยาการคอมพิวเตอร์} % Name of the department in Thai
+{Computer Science} % Name of the department in English
+\fieldofstudy				% set the field of study 
+{วิทยาการคอมพิวเตอร์} % Field in Thai
+{Computer Science} % Field in English
+\degree					% set the degree name
+{วิทยาศาสตร์ดุษฎีบัณฑิต} % Degree name in Thai
+{Doctor of Philosophy} % Degree name in English
+\examdate{3}{May}{2017} % Thesis defense date (A.D. calendar)
+
+\committee				% list of committee, please use \CommitteeBlock,
+{
+\CommitteeBlock{Chairman}{Asst. Prof. Dr. Name Surname} % Chairman
+\CommitteeBlock{Member}{Asst. Prof. Dr. Name Surname} % Examiner
+\CommitteeBlock{Member}{Assoc. Prof. Dr. Name Surname} % Examiner
+\CommitteeBlock{Member}{Assoc. Prof. Dr. Name Surname} % Examiner
+\CommitteeBlock{Member}{Assoc. Prof. Dr. Name Surname} % Examiner
+}
+
+%% DedicationTitle
+\dedicationTitle{To ... \\ (Whom I would like to \\ Dedicate to) ...}
+
+\include{macros}
+%%-------------------------------------------------------------------------------
+%%-                               DOCUMENT                                      -
+%%-------------------------------------------------------------------------------
+\begin{document}
+%% Thesis starts with Front Cover
+\makefrontcover
+
+%% Fly Leaf
+\newpage~\thispagestyle{empty}
+
+%% Inner Cover
+\makeinnercover
+
+%% Title Page
+\maketitlepage
+
+%% Approval Page
+\makeapprovalpage
+
+%% Dedication Page
+\makededicationpage
+
+%% Acknowledgement
+\include{acknowledgement}
+
+%% Abstract in Thai
+\include{abstractthai}
+
+%% Abstract in Englosh
+\include{abstractenglish}
+
+%% Table of Content
+\tolerance=1000 
+\tableofcontents  
+
+%% List of Tables      
+\listoftables
+
+%% List of Figures
+\listoffigures          
+
+%% List of Abbreviations
+\include{listabbv}
+
+%% List of Symbols
+\include{listsymbol}
+
+%% Statements of Originality in Thai
+\include{statementthai}
+
+%% Statements of Originality in English
+\include{statementenglish}
+
+%% Empty Page to set new margin
+\clearpage~\thispagestyle{empty}
+\setlength{\voffset}{-1in+25mm}
+\setlength{\textheight}{23.70cm} 
+
+%%-----------------------------------------------------------------------------
+%%-                               MAIN CONTENT                               -
+%%-----------------------------------------------------------------------------
+%% Chapter 1
+\include{chapter1} 
+
+%% Chapter 2
+\include{chapter2}
+
+%% Chapter 2
+\include{chapter3}
+
+%% Empty Page to reset margin
+\setlength{\voffset}{-1in+35mm}
+\setlength{\textheight}{22.70cm}
+\clearpage~\thispagestyle{empty}
+
+%% Bibliography
+\bibliographystyle{abbrv}
+\insertbibtoc
+\bibliography{main} % speficy your bibtex file here (this example is main.bib).
+\nobibliography* 
+
+%%-----------------------------------------------------------------------------
+%%-                               BACK SECTION                                -
+%%-----------------------------------------------------------------------------
+
+%% List os publications
+\include{listpublication}
+
+%% Curriculum Viate
+\include{cv}
+
+\end{document}
