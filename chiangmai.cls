@@ -10,7 +10,7 @@
 %% The propose of the tex file is to demonstrate the use of CMU Thesis & Dissertation Package for writing a %% thesis/dissertation according to the format of the graduate school of Chiang Mai University.
 %%
 %% Caution: Please keep in mind that the file is not the official template from the graduate school of 
-%% Chiang Mai University. However, the author's dissertation using this tex file have passed the school's 
+%% Chiang Mai University. However, the author's dissertation using this class file have passed the school's 
 %% inspection (in April 2017).
 %%
 %% Credit: This main tex file is modified from the original latex template for Theses and Dissertation of 
